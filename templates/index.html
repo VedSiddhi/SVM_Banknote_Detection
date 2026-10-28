@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banknote Authentication | Linear SVM</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 15px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e0e7ff, #f8fafc);
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 520px;
+            margin: 30px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1d4ed8;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+
+        label {
+            display: block;
+            margin: 16px 0 7px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: 2px solid #93c5fd;
+            border-color: #2563eb;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 24px;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .result {
+            margin-top: 22px;
+            padding: 16px;
+            border-radius: 8px;
+            background: #dbeafe;
+            color: #1e40af;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        footer {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        
+        small {
+            display: block;
+            margin-top: 6px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+    }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Banknote Authentication</h1>
+
+        <p class="subtitle">
+            Counterfeit Detection using Linear Support Vector Machine
+        </p>
+
+        <form method="POST">
+            <label for="variance">Variance</label>
+            <input type="number" step="any" id="variance"
+                   name="variance" placeholder="Enter variance" required>
+            <small>Reference range: -7.04 to 6.82</small>
+
+            <label for="skewness">Skewness</label>
+            <input type="number" step="any" id="skewness"
+                   name="skewness" placeholder="Enter skewness" required>
+            <small>Reference range: -13.77 to 12.95</small>
+
+            <label for="curtosis">Curtosis</label>
+            <input type="number" step="any" id="curtosis"
+                   name="curtosis" placeholder="Enter curtosis" required>
+            <small>Reference range: -5.29 to 17.93</small>
+
+            <label for="entropy">Entropy</label>
+            <input type="number" step="any" id="entropy"
+                   name="entropy" placeholder="Enter entropy"  required>
+            <small>Reference range: -8.55 to 2.45</small>
+
+            <button type="submit">Predict Banknote</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            Prediction: {{ result }}
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="result error">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <footer>
+            Powered by Python, Flask and Linear SVM
+        </footer>
+    </div>
+</body>
+</html>
